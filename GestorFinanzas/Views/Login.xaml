@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestorFinanzas.Views.Login"
+             Title="Login">
+    <ScrollView>
+        <VerticalStackLayout>
+
+        <Label 
+            Text="MEJORA TUS FINANZAS"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Large"
+            Margin="50"
+            />
+        <Image
+            Source="logoapp.png"
+            WidthRequest="250"
+            HeightRequest="250"
+            />
+        <Entry x:Name="usuario"
+            Placeholder="Usuario"
+            ClearButtonVisibility="WhileEditing"
+            Margin="15"
+            />
+        <Entry x:Name="clave"
+            Placeholder="Contraseña"
+            IsPassword="true"
+            ClearButtonVisibility="WhileEditing"
+            Margin="20"
+            />
+
+        <Picker x:Name="moneda"
+        Title="Selecione la moneda a usar" Margin="20">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>DOLAR AMERICANO (USD)</x:String>
+                        <x:String>PESO COLOMBIANO  (COP)</x:String>
+                        <x:String> PESO MEXICANO(MX)</x:String>
+                        <x:String> JUAN JAPONES (JP)</x:String>
+                        <x:String>DOLAR CANADIENCE (CAN)</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Button
+             x:Name="Enviar"
+             Text="INICIAR SECION" 
+             Padding="10"
+             Margin="60"
+             HorizontalOptions="Fill" />
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
