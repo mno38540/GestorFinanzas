@@ -1,4 +1,6 @@
-﻿namespace GestorFinanzas
+﻿using GestorFinanzas.Views;
+
+namespace GestorFinanzas
 {
     public partial class App : Application
     {
@@ -7,6 +9,7 @@
             InitializeComponent();
 
             MainPage = new GestorFinanzas.Views.Login();
+            MainPage = new NavigationPage(new Login());
         }
     }
 }

@@ -44,10 +44,13 @@
             </Picker>
             <Button
              x:Name="Enviar"
+             Clicked="OnButtonClicked"
              Text="INICIAR SECION" 
              Padding="10"
              Margin="60"
-             HorizontalOptions="Fill" />
+             HorizontalOptions="Fill"
+             
+             />
     </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

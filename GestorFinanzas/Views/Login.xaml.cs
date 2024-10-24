@@ -6,4 +6,14 @@ public partial class Login : ContentPage
 	{
 		InitializeComponent();
 	}
+    private async void OnButtonClicked(object sender, EventArgs e)
+    {
+        
+        await Navigation.PushAsync(new Home());
+    }
+    private async void AgregarIngreso()
+    {
+        // Navegar a la página de agregar ingreso
+        await Application.Current.MainPage.Navigation.PushAsync(new Ingreso());
+    }
 }

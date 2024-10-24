@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestorFinanzas.Views.Ingreso"
+             Title="Ingreso">
+    <VerticalStackLayout>
+        <StackLayout Padding="20">
+            <Label Text="Agregar Ingreso" FontSize="24" HorizontalOptions="Center" />
+
+            <Entry Placeholder="Descripción del ingreso" Text="{Binding Descripcion}" />
+            <Entry Placeholder="Cantidad" Keyboard="Numeric" Text="{Binding Cantidad}" />
+
+            <Button Text="Guardar" Command="{Binding GuardarCommand}" />
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

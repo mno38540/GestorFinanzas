@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestorFinanzas.Views.Home"
+             Title="Home">
+    <VerticalStackLayout>
+        <StackLayout Padding="10">
+            <Label Text="Resumen Financiero" FontSize="24" HorizontalOptions="Center" />
+            <BoxView HeightRequest="2" BackgroundColor="Black" />
+            <!-- Fecha en la parte superior -->
+            <Label Text="FECHA ACTUAL PROXIMAMENTE" 
+               HorizontalOptions="Center" 
+               FontSize="18"
+               TextColor="Black"/>
+
+            <!-- Banner con el balance -->
+            <Frame Padding="10" BackgroundColor="#f0f0f0" CornerRadius="10" Margin="10">
+                <StackLayout>
+                    <Label Text="Balance" 
+                       HorizontalOptions="Center" 
+                       FontSize="24" 
+                       FontAttributes="Bold"/>
+                    <Label Text="{Binding Balance}" 
+                       HorizontalOptions="Center" 
+                       FontSize="20" 
+                       TextColor="Green"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- Cuadros de Ingresos y Egresos -->
+            <Grid ColumnDefinitions="*,*" Margin="10">
+                <!-- Cuadro de Ingresos -->
+                <Frame Padding="10" BackgroundColor="#dff0d8" CornerRadius="10" Grid.Column="0" Margin="5">
+                    <StackLayout>
+                        <Label Text="Ingresos" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        <Label Text="{Binding Ingresos}" FontSize="16" TextColor="Green" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Cuadro de Egresos -->
+                <Frame Padding="10" BackgroundColor="#f2dede" CornerRadius="10" Grid.Column="1" Margin="5">
+                    <StackLayout>
+                        <Label Text="Egresos" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        <Label Text="{Binding Egresos}" FontSize="16" TextColor="Red" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Grilla de Movimientos 
+            <CollectionView ItemsSource="{Binding Movimientos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" BorderColor="Gray">
+                            <Grid ColumnDefinitions="*,*,*" Padding="5">
+                                <Label Text="{Binding Fecha}" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
+                                <Label Text="{Binding Concepto}" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
+                                <Label Text="{Binding Monto}" Grid.Column="2" HorizontalOptions="End" FontSize="14" TextColor="{Binding ColorMonto}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <StackLayout Padding="20">
+-->
+            <!-- Cuadros de Ingresos y Egresos -->
+            <Grid ColumnDefinitions="*,*" Margin="10">
+                <!-- Cuadro de Ingresos -->
+                <Frame Padding="10"   Grid.Column="0" Margin="5" BorderColor="White">
+                    <StackLayout>
+                        <Button FontAutoScalingEnabled="True" TextColor="Gray" Text="Registrar Gasto" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" BackgroundColor="#dff0d8"  Clicked="OnIngresosClicked"/>
+                    </StackLayout>
+                </Frame>
+                <!-- Cuadro de Egresos -->
+                <Frame Padding="10"   Grid.Column="1" Margin="1" BorderColor="White">
+                    <StackLayout>
+                        <Button  FontAutoScalingEnabled="True" TextColor="Grey" Text="Registrar Gasto" Clicked="OnGastosClicked" FontSize="18" FontAttributes="Bold" BackgroundColor="#f2dede" HorizontalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>
