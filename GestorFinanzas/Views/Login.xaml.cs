@@ -6,14 +6,17 @@ public partial class Login : ContentPage
 	{
 		InitializeComponent();
 	}
-    private async void OnButtonClicked(object sender, EventArgs e)
+    private async void OnLoginClicked(object sender, EventArgs e)
     {
-        
-        await Navigation.PushAsync(new Home());
-    }
-    private async void AgregarIngreso()
-    {
-        // Navegar a la página de agregar ingreso
-        await Application.Current.MainPage.Navigation.PushAsync(new Ingreso());
+        // Lógica de validación básica
+        if (usuario.Text == "admin" && clave.Text == "1234")
+        {
+            // Navegar a HomePage
+            await Navigation.PushAsync(new Home());
+        }
+        else
+        {
+            await DisplayAlert("Error", "Usuario o contraseña incorrectos", "OK");
+        }
     }
 }

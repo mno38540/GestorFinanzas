@@ -5,141 +5,96 @@
              Title="Home">
     <ScrollView>
         <VerticalStackLayout>
-            <StackLayout Padding="10">
+            
                 <Label Text="Resumen Financiero" FontSize="24" HorizontalOptions="Center" />
                 <BoxView HeightRequest="2" BackgroundColor="Black" />
-                <!-- Fecha en la parte superior -->
-                <Label Text="(24 Oct 2024 19:30)PROXIMAMENTE" 
-                   HorizontalOptions="Center" 
-                   FontSize="15"
-                   TextColor="Black"/>
 
-                <!-- Banner con el balance -->
-                <Frame Padding="10" BackgroundColor="#f0f0f0" CornerRadius="10" Margin="10">
-                    <StackLayout>
+                <Label Text="{Binding FechaActual, StringFormat='{0:dd MMMM yyyy}'}" 
+                       FontSize="Large" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Start"/>
+
+
+                <Frame Padding="10" 
+                       BackgroundColor="LightGray" 
+                       CornerRadius="10" 
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Start" 
+                       Margin="0,10,0,20">
+                    <StackLayout Orientation="Vertical">
                         <Label Text="Balance" 
-                           HorizontalOptions="Center" 
-                           FontSize="24" 
-                           FontAttributes="Bold"/>
+                       FontSize="Medium" 
+                       HorizontalOptions="Center" />
                         <Label Text="{Binding Balance}" 
-                           HorizontalOptions="Center" 
-                           FontSize="20" 
-                           TextColor="Green"/>
-                        <Label Text="$2.600.000" 
-                           HorizontalOptions="Center" 
-                           FontSize="24" 
-                           FontAttributes="Bold"
-                           TextColor="Green"/>
+                       FontSize="Large" 
+                       HorizontalOptions="Center" 
+                       FontAttributes="Bold"/>
+                    </StackLayout>
+                </Frame>
+                
+                <Grid ColumnDefinitions="*,*" 
+                  RowSpacing="10"
+                  ColumnSpacing="20">
+
+                        <!-- Cuadro de Ingresos -->
+                <Frame Padding="10" 
+                       BackgroundColor="LightGreen" 
+                       CornerRadius="10"
+                       Grid.Column="0">
+                    <StackLayout>
+                    <Label Text="Ingresos" 
+                       FontSize="Medium" 
+                       HorizontalOptions="Center" />
+                    <Label Text="{Binding TotalIngresos}" 
+                      FontSize="Large" 
+                      HorizontalOptions="Center" 
+                      FontAttributes="Bold"/>
                     </StackLayout>
                 </Frame>
 
-                <!-- Cuadros de Ingresos y Egresos -->
-                <Grid ColumnDefinitions="*,*" Margin="10">
-                    <!-- Cuadro de Ingresos -->
-                    <Frame Padding="10" BackgroundColor="#dff0d8" CornerRadius="10" Grid.Column="0" Margin="5">
-                        <StackLayout>
-                            <Label Text="Ingresos" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
-                            <Label Text="{Binding Ingresos}" FontSize="16" TextColor="Green" HorizontalOptions="Center"/>
-                            <Label Text="+5120.000" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        </StackLayout>
-                    </Frame>
-
-                    <!-- Cuadro de Egresos -->
-                    <Frame Padding="10" BackgroundColor="#f2dede" CornerRadius="10" Grid.Column="1" Margin="5">
-                        <StackLayout>
-                            <Label Text="Egresos" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
-                            <Label Text="{Binding Egresos}" FontSize="16" TextColor="Red" HorizontalOptions="Center"/>
-                            <Label Text="-2.520.000" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        </StackLayout>
-                    </Frame>
-                </Grid>
-
-                <StackLayout Padding="20">
-
-                    <!-- Cuadros de Ingresos y Egresos -->
-                    <Grid ColumnDefinitions="*,*" Margin="10">
-                        <!-- Cuadro de Ingresos -->
-                        <Frame Padding="10"   Grid.Column="0" Margin="5" BackgroundColor="#dff0d8">
-                            <StackLayout>
-                                <Button  TextColor="Gray" Text="Ingreso" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" BackgroundColor="#dff0d8"  Clicked="OnIngresosClicked"/>
-                            </StackLayout>
-                        </Frame>
                         <!-- Cuadro de Egresos -->
-                        <Frame Padding="10"   Grid.Column="1" Margin="5" BackgroundColor="#f2dede" >
+                        <Frame Padding="10" 
+                       BackgroundColor="LightCoral" 
+                       CornerRadius="10"
+                       Grid.Column="1">
                             <StackLayout>
-                                <Button TextColor="Gray" Text="Gasto"  FontSize="18" FontAttributes="Bold" BackgroundColor="#f2dede" Clicked="OnGastosClicked" /> 
+                                <Label Text="Egresos" 
+                               FontSize="Medium" 
+                               HorizontalOptions="Center" />
+                                <Label Text="{Binding TotalEgresos}" 
+                               FontSize="Large" 
+                               HorizontalOptions="Center" 
+                               FontAttributes="Bold"/>
                             </StackLayout>
                         </Frame>
-                    </Grid>
-                    <!-- Grilla de Movimientos MokUp-->
-                </StackLayout>
-                <StackLayout Padding="20">
-                    <Frame Padding="10" Margin="5" BorderColor="Gray" BackgroundColor="#f2dede" >
-                        <Grid ColumnDefinitions="*,*,*" Padding="5">
-                            <Label Text="5/10/2024" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
-                            <Label Text="Arriendo" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
-                            <Label Text="-850.000" Grid.Column="2" HorizontalOptions="End" FontSize="14" TextColor="red"/>
-                        </Grid>
-                    </Frame>
-                    <Frame Padding="10" Margin="5" BorderColor="Gray" BackgroundColor="#f2dede" >
-                        <Grid ColumnDefinitions="*,*,*" Padding="5">
-                            <Label Text="5/10/2024" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
-                            <Label Text="Arriendo" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
-                            <Label Text="-850.000" Grid.Column="2" HorizontalOptions="End" FontSize="14" TextColor="red"/>
-                        </Grid>
-                    </Frame>
-                    <Frame Padding="10" Margin="5" BorderColor="Gray" BackgroundColor="#f2dede" >
-                        <Grid ColumnDefinitions="*,*,*" Padding="5">
-                            <Label Text="5/10/2024" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
-                            <Label Text="Arriendo" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
-                            <Label Text="-850.000" Grid.Column="2" HorizontalOptions="End" FontSize="14" TextColor="red"/>
-                        </Grid>
-                    </Frame>
-                    <Frame Padding="10" Margin="5" BorderColor="Gray" BackgroundColor="#f2dede" >
-                        <Grid ColumnDefinitions="*,*,*" Padding="5">
-                            <Label Text="5/10/2024" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
-                            <Label Text="Arriendo" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
-                            <Label Text="-850.000" Grid.Column="2" HorizontalOptions="End" FontSize="14" TextColor="red"/>
-                        </Grid>
-                    </Frame>
-                    <Frame Padding="10" Margin="5" BorderColor="Gray" BackgroundColor="#f2dede" >
-                        <Grid ColumnDefinitions="*,*,*" Padding="5">
-                            <Label Text="5/10/2024" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
-                            <Label Text="Arriendo" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
-                            <Label Text="-850.000" Grid.Column="2" HorizontalOptions="End" FontSize="14" TextColor="red"/>
-                        </Grid>
-                    </Frame>
-                    <Frame Padding="10" Margin="5" BorderColor="Gray" BackgroundColor="#f2dede" >
-                        <Grid ColumnDefinitions="*,*,*" Padding="5">
-                            <Label Text="5/10/2024" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
-                            <Label Text="Arriendo" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
-                            <Label Text="-850.000" Grid.Column="2" HorizontalOptions="End" FontSize="14" TextColor="red"/>
-                        </Grid>
-                    </Frame>
-                </StackLayout>
+                </Grid>
+            <Button Text="Agregar Movimiento"
+        Command="{Binding NavegarAgregarMovimientoCommand}" />
+            <Button Text="Agregar Movimiento"
+        Command="{Binding NavegarAgregarMovimientoCommand}" />
 
-                <!-- Grilla de Movimientos 
+            <StackLayout Padding="20">
                 <CollectionView ItemsSource="{Binding Movimientos}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame Padding="10" Margin="5" BorderColor="Gray">
+                            <Frame Padding="10" Margin="5" BorderColor="Gray" BackgroundColor="#f2dede">
                                 <Grid ColumnDefinitions="*,*,*" Padding="5">
+                                    <!-- Fecha -->
                                     <Label Text="{Binding Fecha}" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
-                                    <Label Text="{Binding Concepto}" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
-                                    <Label Text="{Binding Monto}" Grid.Column="2" HorizontalOptions="End" FontSize="14" TextColor="{Binding ColorMonto}"/>
-                                </Grid>
-                                <Grid ColumnDefinitions="*,*,*" Padding="5">
-                                    <Label Text="15/10/2024" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
-                                    <Label Text="Comida" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
-                                    <Label Text="-55.500" Grid.Column="2" HorizontalOptions="End" FontSize="14" TextColor="{Binding ColorMonto}"/>
+
+                                    <!-- Descripción -->
+                                    <Label Text="{Binding Descripcion}" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
+
+                                    <!-- Monto, cambia el color según si es positivo o negativo -->
+                                    <Label Text="{Binding Monto}" Grid.Column="2" HorizontalOptions="End" FontSize="14" 
+                                   TextColor="{Binding ColorMonto}"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                 -->
-            
-             </StackLayout>
+            </StackLayout>
+    
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
