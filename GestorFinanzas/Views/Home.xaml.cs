@@ -10,13 +10,6 @@ public partial class Home : ContentPage
         BindingContext = new MovimientosViewModel();
     }
 
-    private async void OnIngresosClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new Ingreso());
-    }
 
-    private async void OnGastosClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new Gasto());
-    }
+
 }

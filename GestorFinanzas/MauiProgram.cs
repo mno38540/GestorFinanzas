@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GestorFinanzas.Model;
+using Microsoft.Extensions.Logging;
 
 namespace GestorFinanzas
 {
@@ -14,9 +15,11 @@ namespace GestorFinanzas
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
+            var dbcontext = new Data();
+            dbcontext.Database.EnsureCreated();
+            dbcontext.Dispose();
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

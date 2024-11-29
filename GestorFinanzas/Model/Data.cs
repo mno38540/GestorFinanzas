@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace GestorFinanzas.Model
 {
     public class Data : DbContext
@@ -14,25 +15,33 @@ namespace GestorFinanzas.Model
         public DbSet<Balance> Balance { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-        /*public string Fecha { get; set; }
-        public string Descripcion { get; set; }
-        public decimal Monto { get; set; }
-
-        // El color se basa en si el monto es positivo o negativo
-        public string ColorMonto => Monto < 0 ? "Red" : "Green";
-        */
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("Datas");
+            optionsBuilder.UseInMemoryDatabase("Shop");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Movimiento>().HasKey();
-            modelBuilder.Entity<Balance>().HasKey();
-            modelBuilder.Entity<Category>().HasKey();
-            modelBuilder.Entity<Usuario>().HasKey();
+            modelBuilder.Entity<Category>().HasData(
+                new Category(1, "Salario","ingreso"),
+                new Category(2, "Pago","Gasto"),
+                new Category(3, "Transporte", "Gasto" ),
+                new Category(4, "Comida", "Gasto")
+                );
 
+            modelBuilder.Entity<Movimiento>().HasData(
+                new Movimiento(1,"Pago de sueldo",2000000,"05/12/2024",1,1),
+                new Movimiento(1, "Pago de sueldo", 2000000, "05/12/2024", 1, 2)
+                );
+            modelBuilder.Entity<Balance>().HasData(
+                new Balance(1, 2550000, 1000000, "01/11/2024", "30/11/2024", 1)
+                );
+            modelBuilder.Entity<Usuario>().HasData(
+                new Usuario(1, "Andres", "Claro2020"),
+                new Usuario(2, "Karen Silva", "Nutri"),
+                new Usuario(2, "Admin", "Admin1234")
+                );
+            
         }
 
     }
@@ -41,11 +50,12 @@ namespace GestorFinanzas.Model
         public Category Category { get; set; }
         public Usuario Usuario { get; set; }
     }
+    public record Usuario(int IdUsuario, string usuario, string Clave);
     public record Balance (int idBalance, decimal TotalIngresos, decimal TotalEgresos , string FechaInicio , string FechaFin, int idUsuario) 
     {
         public Usuario Usuario { get; set; }
     }
     public record Category (int idCategory , string Nombre, string Tipo);
-    public record Usuario(int IdUsuario , string Clave);
+    
 
 }
