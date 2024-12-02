@@ -7,6 +7,7 @@ public partial class Gasto : ContentPage
 	public Gasto()
 	{
 		InitializeComponent();
-        BindingContext = new GastoViewModel();
+        BindingContext = App.MovimientosViewModel;
+		//BindingContext = new GastoViewModel();
     }
 }

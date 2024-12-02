@@ -12,9 +12,9 @@ public partial class Home : ContentPage
 	{
 		InitializeComponent();
         //var dbContext = new Data();
-        BindingContext = new MovimientosViewModel();
+        BindingContext = App.MovimientosViewModel;
         //BindingContext = new HomeViewModel();
-        
+
     }
 
 }

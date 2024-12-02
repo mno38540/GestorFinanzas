@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -19,22 +20,12 @@ namespace GestorFinanzas.ViewModel
 
 
         //Propiedades para el calculo de los totales
-        public decimal TotalIngresos { get; private set; }
-        public decimal TotalEgresos { get; private set; }
-        public decimal Balance => TotalIngresos + TotalEgresos;
-
-
-
-
         public DateTime FechaActual { get; set; } = DateTime.Now;
         public MovimientosViewModel()
         {
             var database = new Data();
-            Movimientos = new ObservableCollection<Movimiento>(database.Movimientos);
-            TotalIngresos = ObtenerTotalIngresos();
-            TotalEgresos = ObtenerTotalEgresos();
-            PropertyChanged += HelpSupportData_PropertyChanged;
-
+            
+            
             AgregarIngresoCommand = new Command(async () =>
        {
            var ingresoPage = new Ingreso
@@ -53,10 +44,13 @@ namespace GestorFinanzas.ViewModel
                 await Application.Current.MainPage.Navigation.PushAsync(gastoPage);
             });
 
-
+            Movimientos = new ObservableCollection<Movimiento>(database.Movimientos);
+            Movimientos.CollectionChanged += Movimientos_CollectionChanged;
+            ActualizarTotales();
+            PropertyChanged += Movimiento_PropertyChanged;
         }
 
-        private async void HelpSupportData_PropertyChanged(Object? sender, PropertyChangedEventArgs e)
+        private async void Movimiento_PropertyChanged(Object? sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(MovimientoSeleccionado))
             {
@@ -78,6 +72,7 @@ namespace GestorFinanzas.ViewModel
                 }
             }
         }
+       
 
 
         private Movimiento _movimientoSeleccionado;
@@ -93,19 +88,51 @@ namespace GestorFinanzas.ViewModel
                 }
             }
         }
-        public decimal ObtenerTotalIngresos()
+
+
+        private decimal _totalIngresos;
+        public decimal TotalIngresos
         {
-            return _movimientos.Where(m => m.Monto > 0).Sum(m => m.Monto);
+            get => _totalIngresos;
+            private set
+            {
+                if (_totalIngresos != value)
+                {
+                    _totalIngresos = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
 
-        public decimal ObtenerTotalEgresos()
+        private decimal _totalEgresos;
+        public decimal TotalEgresos
         {
-            return _movimientos.Where(m => m.Monto < 0).Sum(m => m.Monto);
+            get => _totalEgresos;
+            private set
+            {
+                if (_totalEgresos != value)
+                {
+                    _totalEgresos = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
-        public void AgregarMovimiento(Movimiento movimiento)
+        public decimal Balance => TotalIngresos + TotalEgresos;
+
+
+        private void Movimientos_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Movimientos.Add(movimiento);
+            // Recalcula los totales al cambiar la colección
+            ActualizarTotales();
         }
+
+        private void ActualizarTotales()
+        {
+            TotalIngresos = Movimientos.Where(m => m.Monto > 0).Sum(m => m.Monto);
+            TotalEgresos = Movimientos.Where(m => m.Monto < 0).Sum(m => m.Monto);
+            RaisePropertyChanged(nameof(Balance)); // Notifica cambios en el balance.
+        }
+
 
     }
 

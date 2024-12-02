@@ -10,15 +10,27 @@
 
     <VerticalStackLayout>
         <StackLayout Padding="20" Spacing="20">
-            <Entry x:Name="Descripcion" Placeholder="Descripción del Movimiento" />
-            <Entry x:Name="Monto" Placeholder="Monto del Movimiento" Keyboard="Numeric" />
-            <Picker x:Name="CategoriaSeleccionada" Title="Selecciona una Categoría">
-       
-            </Picker>
-            <DatePicker x:Name="FechaPicker" Date="{Binding FechaActual}" />
+            <!-- Vincula la descripción al ViewModel -->
+            <Entry Placeholder="Descripción del Movimiento" 
+                   Text="{Binding Descripcion}" />
 
+            <!-- Vincula el monto al ViewModel -->
+            <Entry Placeholder="Monto del Movimiento" 
+                   Text="{Binding Monto}" 
+                   Keyboard="Numeric" />
+
+            <!-- Vincula las categorías al ViewModel -->
+            <Picker Title="Selecciona una Categoría" 
+                    ItemsSource="{Binding Categories}" 
+                     SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}"
+                    ItemDisplayBinding="{Binding Nombre}" />
+
+            <!-- Vincula la fecha al ViewModel -->
+            <DatePicker Date="{Binding Fecha}" />
+
+            <!-- Botón que ejecuta el comando -->
             <Button Text="Guardar Movimiento"
-                Command="{Binding GuardarGastoCommand  }" />
+                    Command="{Binding GuardarGastoCommand}" />
         </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

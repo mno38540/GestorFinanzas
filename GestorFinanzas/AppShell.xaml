@@ -41,6 +41,7 @@
         <ShellContent
         Title="Detalle Movimientos"
         ContentTemplate="{DataTemplate Views:MovimientoDetalle}"
+         
         Route="Movimientos" />
         
 
