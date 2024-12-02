@@ -2,7 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GestorFinanzas.Views.Home"
+             xmlns:ViewModel="clr-namespace:GestorFinanzas.ViewModel"
              Title="Home">
+
+    <ContentPage.BindingContext>
+        <ViewModel:MovimientosViewModel />
+        
+
+    </ContentPage.BindingContext>
     <ScrollView>
         <VerticalStackLayout>
             
@@ -25,7 +32,7 @@
                         <Label Text="Balance" 
                        FontSize="Medium" 
                        HorizontalOptions="Center" />
-                        <Label Text="{Binding Balance}" 
+                    <Label Text="{Binding Balance , StringFormat='{0:C}'}" 
                        FontSize="Large" 
                        HorizontalOptions="Center" 
                        FontAttributes="Bold"/>
@@ -45,7 +52,7 @@
                     <Label Text="Ingresos" 
                        FontSize="Medium" 
                        HorizontalOptions="Center" />
-                    <Label Text="{Binding TotalIngresos}" 
+                        <Label Text="{Binding TotalIngresos, StringFormat='{0:C}'}" 
                       FontSize="Large" 
                       HorizontalOptions="Center" 
                       FontAttributes="Bold"/>
@@ -61,7 +68,7 @@
                                 <Label Text="Egresos" 
                                FontSize="Medium" 
                                HorizontalOptions="Center" />
-                                <Label Text="{Binding TotalEgresos}" 
+                        <Label Text="{Binding TotalEgresos ,StringFormat='{0:C}' }" 
                                FontSize="Large" 
                                HorizontalOptions="Center" 
                                FontAttributes="Bold"/>
@@ -69,30 +76,40 @@
                         </Frame>
                 </Grid>
             <Button Text="Agregar Movimiento"
-        Command="{Binding NavegarAgregarMovimientoCommand}" />
+        Command="{Binding NavegarAgregarIngresoCommand}" />
             <Button Text="Agregar Movimiento"
-        Command="{Binding NavegarAgregarMovimientoCommand}" />
+        Command="{Binding NavegarAgregarEgresoCommand}" />
 
             <StackLayout Padding="20">
-                <CollectionView ItemsSource="{Binding Movimientos}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame Padding="10" Margin="5" BorderColor="Gray" BackgroundColor="#f2dede">
-                                <Grid ColumnDefinitions="*,*,*" Padding="5">
-                                    <!-- Fecha -->
-                                    <Label Text="{Binding Fecha}" Grid.Column="0" HorizontalOptions="Start" FontSize="14"/>
+              
 
-                                    <!-- Descripción -->
-                                    <Label Text="{Binding Descripcion}" Grid.Column="1" HorizontalOptions="Center" FontSize="14"/>
+                
+                    <CollectionView ItemsSource="{Binding Movimientos}"
+                                    Margin="10" 
+                                    SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="Gray" CornerRadius="5" Padding="10" Margin="5">
+                                    <Grid ColumnDefinitions="*,2*,*">
+                                        <!-- Fecha -->
+                                        <Label Text="{Binding Fecha}" Grid.Column="0" FontSize="14" HorizontalOptions="Start" />
 
-                                    <!-- Monto, cambia el color según si es positivo o negativo -->
-                                    <Label Text="{Binding Monto}" Grid.Column="2" HorizontalOptions="End" FontSize="14" 
-                                   TextColor="{Binding ColorMonto}"/>
-                                </Grid>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                        <!-- Descripción -->
+                                        <Label Text="{Binding Descripcion}" Grid.Column="1" FontSize="14" HorizontalOptions="Center" />
+
+                                        <!-- Monto -->
+                                        <Label Text="{Binding Monto, StringFormat='{0:C}'}" 
+                                   Grid.Column="2" 
+                                   FontSize="14" 
+                                   HorizontalOptions="End" 
+                                    />
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                
+
             </StackLayout>
     
         </VerticalStackLayout>

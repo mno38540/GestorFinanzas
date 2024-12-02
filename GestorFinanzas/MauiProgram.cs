@@ -1,4 +1,5 @@
 ﻿using GestorFinanzas.Model;
+using GestorFinanzas.Views;
 using Microsoft.Extensions.Logging;
 
 namespace GestorFinanzas
@@ -18,6 +19,10 @@ namespace GestorFinanzas
             var dbcontext = new Data();
             dbcontext.Database.EnsureCreated();
             dbcontext.Dispose();
+
+            Routing.RegisterRoute(nameof(MovimientoDetalle), typeof(MovimientoDetalle));
+
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

@@ -4,12 +4,42 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:GestorFinanzas"
+    xmlns:Views="clr-namespace:GestorFinanzas.Views"
     Shell.FlyoutBehavior="Flyout"
     Title="GestorFinanzas">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+    <Shell.FlyoutHeader>
+        <Label>Bienvenido a tu Gestor financiero </Label>
+        
+    </Shell.FlyoutHeader>
+    
+    <FlyoutItem>
+        <ShellContent
+        Title="Nuevo Ingreso"
+        ContentTemplate="{DataTemplate Views:Ingreso}"
         Route="MainPage" />
-    </Shell>
+        <ShellContent
+        Title="Nuevo Gasto"
+        ContentTemplate="{DataTemplate Views:Gasto}"
+        Route="MainPage" />
+        <ShellContent
+        Title="Detalle Movimientos"
+        ContentTemplate="{DataTemplate Views:MovimientoDetalle}"
+        Route="MainPage" />
+
+
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <ShellContent
+        Title="Cerrar Session"
+        ContentTemplate="{DataTemplate Views:Login}"
+        Route="Login" />
+
+
+    </Shell.FlyoutFooter>
+
+    
+
+</Shell>
 
