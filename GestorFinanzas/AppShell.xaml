@@ -9,24 +9,40 @@
     Title="GestorFinanzas">
 
     <Shell.FlyoutHeader>
-        <Label>Bienvenido a tu Gestor financiero </Label>
-        
+        <StackLayout BackgroundColor="DarkBlue" Padding="20">
+            <Image Source="user_avatar.png" WidthRequest="100" HeightRequest="100" />
+            <Label Text="Andrés Arias" FontSize="20" TextColor="White" HorizontalOptions="Center" />
+        </StackLayout>
     </Shell.FlyoutHeader>
+
+    <ShellContent
+     Title="Inicio"
+     ContentTemplate="{DataTemplate Views:Home}"
+     Route="Home" />
+    <ShellContent
+     Title="About"
+     ContentTemplate="{DataTemplate local:MainPage}"
+     Route="MainPage" />
     
-    <FlyoutItem>
+    <FlyoutItem Title="Interacciones">
+       
         <ShellContent
         Title="Nuevo Ingreso"
         ContentTemplate="{DataTemplate Views:Ingreso}"
-        Route="MainPage" />
-        <ShellContent
+        Route="Ingreso" />
+            
+        
+         <ShellContent
         Title="Nuevo Gasto"
         ContentTemplate="{DataTemplate Views:Gasto}"
-        Route="MainPage" />
+        Route="Gasto" />
+       
+       
         <ShellContent
         Title="Detalle Movimientos"
         ContentTemplate="{DataTemplate Views:MovimientoDetalle}"
-        Route="MainPage" />
-
+        Route="Movimientos" />
+        
 
     </FlyoutItem>
 

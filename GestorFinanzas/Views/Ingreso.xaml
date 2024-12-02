@@ -10,7 +10,7 @@
             <Entry Placeholder="Descripción del ingreso" Text="{Binding Descripcion}" />
             <Entry Placeholder="Cantidad" Keyboard="Numeric" Text="{Binding Cantidad}" />
 
-            <Button Text="Guardar" Command="{Binding GuardarCommand}" />
+            <Button Text="Guardar" Command="{Binding GuardarMovimientoCommand}" />
         </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

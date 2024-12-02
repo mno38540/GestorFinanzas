@@ -75,10 +75,21 @@
                             </StackLayout>
                         </Frame>
                 </Grid>
-            <Button Text="Agregar Movimiento"
-        Command="{Binding NavegarAgregarIngresoCommand}" />
-            <Button Text="Agregar Movimiento"
-        Command="{Binding NavegarAgregarEgresoCommand}" />
+            <Button Text="Agregar Ingreso"
+       Command="{Binding AgregarIngresoCommand}"
+        BackgroundColor="Green"
+        TextColor="White"
+        CornerRadius="10"
+        HorizontalOptions="Center"
+        VerticalOptions="Start" />
+
+            <Button Text="Agregar Egreso"
+        Command="{Binding AgregarGastoCommand}" 
+        BackgroundColor="Red"
+        TextColor="White"
+        CornerRadius="10"
+        HorizontalOptions="Center"
+        VerticalOptions="Start" />
 
             <StackLayout Padding="20">
               

@@ -17,6 +17,7 @@ public partial class Login : ContentPage
         {
             // Navegar a HomePage
             await Navigation.PushAsync(new Home());
+            Application.Current.MainPage = new AppShell();
         }
         else
         {

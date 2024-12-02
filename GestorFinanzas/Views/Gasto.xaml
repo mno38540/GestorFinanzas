@@ -2,15 +2,23 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GestorFinanzas.Views.Gasto"
+             xmlns:ViewModel="clr-namespace:GestorFinanzas.ViewModel"
              Title="Gasto">
+    <ContentPage.BindingContext>
+        <ViewModel:GastoViewModel/>
+    </ContentPage.BindingContext>
+
     <VerticalStackLayout>
-        <StackLayout Padding="20">
-            <Label Text="Agregar Gasto" FontSize="24" HorizontalOptions="Center" />
+        <StackLayout Padding="20" Spacing="20">
+            <Entry x:Name="Descripcion" Placeholder="Descripción del Movimiento" />
+            <Entry x:Name="Monto" Placeholder="Monto del Movimiento" Keyboard="Numeric" />
+            <Picker x:Name="CategoriaSeleccionada" Title="Selecciona una Categoría">
+       
+            </Picker>
+            <DatePicker x:Name="FechaPicker" Date="{Binding FechaActual}" />
 
-            <Entry Placeholder="Descripción del gasto" Text="{Binding Descripcion}" />
-            <Entry Placeholder="Cantidad" Keyboard="Numeric" Text="{Binding Cantidad}" />
-
-            <Button Text="Guardar" Command="{Binding GuardarCommand}" />
+            <Button Text="Guardar Movimiento"
+                Command="{Binding GuardarGastoCommand  }" />
         </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using GestorFinanzas.Model;
 using GestorFinanzas.Views;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -13,25 +14,45 @@ namespace GestorFinanzas.ViewModel
 {
     public class MovimientosViewModel : BindingUtilObject
     {
+        public Command AgregarIngresoCommand { get; }
+        public Command AgregarGastoCommand { get; }
+
 
         //Propiedades para el calculo de los totales
         public decimal TotalIngresos { get; private set; }
         public decimal TotalEgresos { get; private set; }
         public decimal Balance => TotalIngresos + TotalEgresos;
 
-        /// <summary>
-        /// lista de movimientos para cargar en el observable colection
-        /// </summary>
-        
+
+
 
         public DateTime FechaActual { get; set; } = DateTime.Now;
         public MovimientosViewModel()
         {
-        var database = new Data();
-        Movimientos = new ObservableCollection<Movimiento>(database.Movimientos);
+            var database = new Data();
+            Movimientos = new ObservableCollection<Movimiento>(database.Movimientos);
             TotalIngresos = ObtenerTotalIngresos();
             TotalEgresos = ObtenerTotalEgresos();
-        PropertyChanged += HelpSupportData_PropertyChanged;
+            PropertyChanged += HelpSupportData_PropertyChanged;
+
+            AgregarIngresoCommand = new Command(async () =>
+       {
+           var ingresoPage = new Ingreso
+           {
+               BindingContext = new IngresoViewModel()
+           };
+           await Application.Current.MainPage.Navigation.PushAsync(ingresoPage);
+       });
+
+            AgregarGastoCommand = new Command(async () =>
+            {
+                var gastoPage = new Gasto
+                {
+                    BindingContext = new GastoViewModel()
+                };
+                await Application.Current.MainPage.Navigation.PushAsync(gastoPage);
+            });
+
 
         }
 
@@ -83,9 +104,9 @@ namespace GestorFinanzas.ViewModel
         }
         public void AgregarMovimiento(Movimiento movimiento)
         {
-            _movimientos.Add(movimiento);
-            RaisePropertyChanged();
+            Movimientos.Add(movimiento);
         }
+
     }
 
 }
