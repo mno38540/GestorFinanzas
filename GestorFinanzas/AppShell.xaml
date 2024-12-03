@@ -6,8 +6,9 @@
     xmlns:local="clr-namespace:GestorFinanzas"
     xmlns:Views="clr-namespace:GestorFinanzas.Views"
     Shell.FlyoutBehavior="Flyout"
+     xmlns:ViewModel="clr-namespace:GestorFinanzas.ViewModel"
     Title="GestorFinanzas">
-
+   
     <Shell.FlyoutHeader>
         <StackLayout BackgroundColor="DarkBlue" Padding="20">
             <Image Source="user_avatar.png" WidthRequest="100" HeightRequest="100" />
@@ -23,7 +24,22 @@
      Title="About"
      ContentTemplate="{DataTemplate local:MainPage}"
      Route="MainPage" />
-    
+    <ShellContent Title="Nuevo Ingreso">
+        <ContentPage Title="Menú">
+            <ContentPage.BindingContext>
+                <ViewModel:MovimientosViewModel/>
+            </ContentPage.BindingContext>
+            <Button Text="Home" Command="{Binding AgregarIngresoCommand}"  />
+        </ContentPage>
+    </ShellContent>
+    <ShellContent Title="Nuevo Egreso">
+        <ContentPage Title="Menú">
+            <ContentPage.BindingContext>
+                <ViewModel:MovimientosViewModel/>
+            </ContentPage.BindingContext>
+            <Button Text="Home" Command="{Binding AgregarGastoCommand}"  />
+        </ContentPage>
+    </ShellContent>
     <FlyoutItem Title="Interacciones">
        
         <ShellContent

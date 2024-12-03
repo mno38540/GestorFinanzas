@@ -10,7 +10,7 @@ using GestorFinanzas.Views;
 
 namespace GestorFinanzas.ViewModel
 {
-    internal class GastoViewModel: BindingUtilObject
+    public class GastoViewModel: BindingUtilObject
     {
         public ICommand GuardarGastoCommand { get; }
         private string descripcion;

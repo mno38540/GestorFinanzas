@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
 using GestorFinanzas.Model;
 using GestorFinanzas.Views;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+
 
 namespace GestorFinanzas.ViewModel
 {
@@ -49,7 +51,6 @@ namespace GestorFinanzas.ViewModel
             ActualizarTotales();
             PropertyChanged += Movimiento_PropertyChanged;
         }
-
         private async void Movimiento_PropertyChanged(Object? sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(MovimientoSeleccionado))
@@ -72,9 +73,6 @@ namespace GestorFinanzas.ViewModel
                 }
             }
         }
-       
-
-
         private Movimiento _movimientoSeleccionado;
         public Movimiento MovimientoSeleccionado
         {
@@ -88,8 +86,6 @@ namespace GestorFinanzas.ViewModel
                 }
             }
         }
-
-
         private decimal _totalIngresos;
         public decimal TotalIngresos
         {

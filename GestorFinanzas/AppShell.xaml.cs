@@ -7,6 +7,7 @@ namespace GestorFinanzas
         public AppShell()
         {
             InitializeComponent();
+
             FlyoutBehavior = FlyoutBehavior.Flyout;
 
         }

@@ -17,6 +17,8 @@ public partial class Login : ContentPage
         {
             // Navegar a HomePage
             await Navigation.PushAsync(new Home());
+            var uri = $"{nameof(Home)}?id={u.Id}";
+            //await Shell.Current.GoToAsync(uri);
             Application.Current.MainPage = new AppShell();
         }
         else

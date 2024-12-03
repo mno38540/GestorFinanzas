@@ -2,15 +2,36 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GestorFinanzas.Views.Ingreso"
+             xmlns:ViewModel="clr-namespace:GestorFinanzas.ViewModel"
              Title="Ingreso">
+
+    <ContentPage.BindingContext>
+        <ViewModel:IngresoViewModel/>
+    </ContentPage.BindingContext>
+
     <VerticalStackLayout>
-        <StackLayout Padding="20">
-            <Label Text="Agregar Ingreso" FontSize="24" HorizontalOptions="Center" />
+        <StackLayout Padding="20" Spacing="20">
+            <!-- Vincula la descripción al ViewModel -->
+            <Entry Placeholder="Descripción del Movimiento" 
+           Text="{Binding Descripcion}" />
 
-            <Entry Placeholder="Descripción del ingreso" Text="{Binding Descripcion}" />
-            <Entry Placeholder="Cantidad" Keyboard="Numeric" Text="{Binding Cantidad}" />
+            <!-- Vincula el monto al ViewModel -->
+            <Entry Placeholder="Monto del Movimiento" 
+           Text="{Binding Monto}" 
+           Keyboard="Numeric" />
 
-            <Button Text="Guardar" Command="{Binding GuardarMovimientoCommand}" />
+            <!-- Vincula las categorías al ViewModel -->
+            <Picker Title="Selecciona una Categoría" 
+            ItemsSource="{Binding Categories}" 
+             SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}"
+            ItemDisplayBinding="{Binding Nombre}" />
+
+            <!-- Vincula la fecha al ViewModel -->
+            <DatePicker Date="{Binding Fecha}" />
+
+            <!-- Botón que ejecuta el comando -->
+            <Button Text="Guardar Movimiento"
+            Command="{Binding GuardarGastoCommand}" />
         </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

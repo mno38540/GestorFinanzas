@@ -96,7 +96,7 @@
 
                 
                     <CollectionView ItemsSource="{Binding Movimientos}"
-                                     SelectionChangedCommand="{Binding MovimientoSeleccionadoCommand}"
+                                    SelectedItem="{Binding MovimientoSeleccionado, Mode=TwoWay}"
                                     Margin="10" 
                                     SelectionMode="Single">
                         <CollectionView.ItemTemplate>

@@ -2,11 +2,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GestorFinanzas.Views.MovimientoDetalle"
+              xmlns:ViewModel="clr-namespace:GestorFinanzas.ViewModel"
              Title="MovimientoDetalle">
+    <ContentPage.BindingContext>
+        <ViewModel:MovimientoDetalleViewModel/>
+    </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Label Text="Detalle del Movimiento" FontSize="20" HorizontalOptions="Center" />
+
+            <Label Text="Descripción:" FontSize="16" />
+            <Label Text="{Binding Descripcion}" FontSize="16" />
+
+            <Label Text="Monto:" FontSize="16" />
+            <Label Text="{Binding Monto}" FontSize="16" />
+
+            <Label Text="Fecha:" FontSize="16" />
+            <Label Text="{Binding Fecha}" FontSize="16" />
+
+            <Label Text="Categoría:" FontSize="16" />
+            <Label Text="{Binding Category.Nombre}" FontSize="16" />
+
+            <Button Text="Volver" Command="{Binding VolverCommand}" />
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
