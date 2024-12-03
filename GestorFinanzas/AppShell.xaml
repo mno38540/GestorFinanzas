@@ -10,8 +10,13 @@
     Title="GestorFinanzas">
    
     <Shell.FlyoutHeader>
-        <StackLayout BackgroundColor="DarkBlue" Padding="20">
-            <Image Source="user_avatar.png" WidthRequest="100" HeightRequest="100" />
+        <StackLayout BackgroundColor="DarkBlue" Padding="15">
+            <Image
+    Source="dotnet_bot.png"
+    HeightRequest="90"
+    Aspect="AspectFit"
+    SemanticProperties.Description="dot net bot in a race car number eight" />
+            
             <Label Text="Andrés Arias" FontSize="20" TextColor="White" HorizontalOptions="Center" />
         </StackLayout>
     </Shell.FlyoutHeader>
@@ -21,58 +26,66 @@
      ContentTemplate="{DataTemplate Views:Home}"
      Route="Home" />
     <ShellContent
-     Title="About"
+     Title="LogOut"
      ContentTemplate="{DataTemplate local:MainPage}"
      Route="MainPage" />
     <ShellContent Title="Nuevo Ingreso">
-        <ContentPage Title="Menú">
+        <ContentPage Title="Nuevo Ingreso">
             <ContentPage.BindingContext>
                 <ViewModel:MovimientosViewModel/>
             </ContentPage.BindingContext>
-            <Button Text="Home" Command="{Binding AgregarIngresoCommand}"  />
+            <Button Text="Nuevo Ingreso" Command="{Binding AgregarIngresoCommand}" BackgroundColor="LightGreen"  />
         </ContentPage>
     </ShellContent>
     <ShellContent Title="Nuevo Egreso">
-        <ContentPage Title="Menú">
+        <ContentPage Title="Nuevo Egreso">
             <ContentPage.BindingContext>
                 <ViewModel:MovimientosViewModel/>
             </ContentPage.BindingContext>
-            <Button Text="Home" Command="{Binding AgregarGastoCommand}"  />
+            <Button Text="Nuevo Gasto" Command="{Binding AgregarGastoCommand}" BackgroundColor="LightCoral"  />
         </ContentPage>
     </ShellContent>
+
     <FlyoutItem Title="Interacciones">
        
         <ShellContent
         Title="Nuevo Ingreso"
-        ContentTemplate="{DataTemplate Views:Ingreso}"
-        Route="Ingreso" />
-            
-        
-         <ShellContent
-        Title="Nuevo Gasto"
-        ContentTemplate="{DataTemplate Views:Gasto}"
-        Route="Gasto" />
-       
-       
+        Route="Ingreso">
+            <ContentPage Title="Acciones">
+                <ContentPage.BindingContext>
+                    <ViewModel:MovimientosViewModel/>
+                </ContentPage.BindingContext>
+                <Button Text="Nuevo Gasto" Command="{Binding AgregarGastoCommand}" BackgroundColor="LightGreen"  />
+            </ContentPage>
+        </ShellContent>
+
+
         <ShellContent
-        Title="Detalle Movimientos"
-        ContentTemplate="{DataTemplate Views:MovimientoDetalle}"
-         
-        Route="Movimientos" />
-        
+        Title="Nuevo Gasto"
+        Route="Gasto">
+            <ContentPage Title="Nuevo Gasto">
+                <ContentPage.BindingContext>
+                    <ViewModel:MovimientosViewModel/>
+                </ContentPage.BindingContext>
+                <Button Text="Nuevo Gasto" Command="{Binding AgregarGastoCommand}" BackgroundColor="LightCoral"  />
+            </ContentPage>
+        </ShellContent>
+
 
     </FlyoutItem>
 
     <Shell.FlyoutFooter>
-        <ShellContent
-        Title="Cerrar Session"
-        ContentTemplate="{DataTemplate Views:Login}"
-        Route="Login" />
-
+        <Label>Aplicacion creada para la clase de Poo 2</Label>
+       
 
     </Shell.FlyoutFooter>
-
-    
-
+   
 </Shell>
+<!--<FlyoutItem Title="Agregar Ingreso">
+    <FlyoutItem.Icon>
+        <FontImageSource Glyph="&#xE710;" FontFamily="Segoe MDL2 Assets" />
+    </FlyoutItem.Icon>
+    <ShellContent ContentTemplate="{DataTemplate local:IngresoPage}" 
+              Command="{Binding AgregarIngresoCommand}" />
+</FlyoutItem>-->
 

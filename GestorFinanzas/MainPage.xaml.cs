@@ -1,25 +1,21 @@
-﻿namespace GestorFinanzas
+﻿using GestorFinanzas.Views;
+
+namespace GestorFinanzas
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        public Command Cerrar { get; }
 
         public MainPage()
         {
             InitializeComponent();
+            Cerrar = new Command(async () =>
+            {
+                await Navigation.PushAsync(new Login());
+            });
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+      
     }
 
 }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using GestorFinanzas.Service;
 using GestorFinanzas.Model;
 using GestorFinanzas.Views;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -49,14 +49,17 @@ namespace GestorFinanzas.ViewModel
             Movimientos = new ObservableCollection<Movimiento>(database.Movimientos);
             Movimientos.CollectionChanged += Movimientos_CollectionChanged;
             ActualizarTotales();
-            PropertyChanged += Movimiento_PropertyChanged;
+            PropertyChanged += OnMovimientoSeleccionado;
         }
-        private async void Movimiento_PropertyChanged(Object? sender, PropertyChangedEventArgs e)
+        private async void OnMovimientoSeleccionado(Object? sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(MovimientoSeleccionado))
             {
+                App.MovimientoService.MovimientoSeleccionado = MovimientoSeleccionado;
                 var uri = $"{nameof(MovimientoDetalle)}?id={MovimientoSeleccionado.Id}";
                 await Shell.Current.GoToAsync(uri);
+                
+
             }
         }
 

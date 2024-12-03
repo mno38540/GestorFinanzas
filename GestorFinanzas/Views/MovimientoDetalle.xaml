@@ -12,13 +12,13 @@
             <Label Text="Detalle del Movimiento" FontSize="20" HorizontalOptions="Center" />
 
             <Label Text="Descripción:" FontSize="16" />
-            <Label Text="{Binding Descripcion}" FontSize="16" />
+            <Label Text="{Binding  Movimiento.Descripcion}" FontSize="16" />
 
             <Label Text="Monto:" FontSize="16" />
-            <Label Text="{Binding Monto}" FontSize="16" />
+            <Label Text="{Binding Movimiento.Monto ,  StringFormat='{0:C}'}" FontSize="16" />
 
             <Label Text="Fecha:" FontSize="16" />
-            <Label Text="{Binding Fecha}" FontSize="16" />
+            <Label Text="{Binding Movimiento.Fecha}" FontSize="16" />
 
             <Label Text="Categoría:" FontSize="16" />
             <Label Text="{Binding Category.Nombre}" FontSize="16" />
