@@ -16,6 +16,7 @@ namespace GestorFinanzas.ViewModel
         private decimal monto;
         private DateTime fecha;
         private Category categoriaSeleccionada;
+        public string ColorMonto => Monto < 0 ? "Red" : "Green";
         public IngresoViewModel()
         {
             // Cargar las categorías desde la base de datos

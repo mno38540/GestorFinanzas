@@ -9,10 +9,10 @@ namespace GestorFinanzas
         public MainPage()
         {
             InitializeComponent();
-            Cerrar = new Command(async () =>
-            {
-                await Navigation.PushAsync(new Login());
-            });
+            //Cerrar = new Command(async () =>
+            //{
+            //    await Navigation.PushAsync(new Login());
+            //});
         }
 
       

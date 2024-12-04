@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GestorFinanzas.Views.Ingreso"
              xmlns:ViewModel="clr-namespace:GestorFinanzas.ViewModel"
+             xmlns:converter="clr-namespace:GestorFinanzas.Converter"
              Title="Ingreso">
-
+    
     <ContentPage.BindingContext>
         <ViewModel:IngresoViewModel/>
+       
     </ContentPage.BindingContext>
 
     <VerticalStackLayout>
@@ -18,6 +20,7 @@
             <!-- Vincula el monto al ViewModel -->
             <Entry Placeholder="Monto del Movimiento" 
            Text="{Binding Monto}" 
+            TextColor="{Binding ColorMonto }"
            Keyboard="Numeric" />
 
             <!-- Vincula las categorías al ViewModel -->

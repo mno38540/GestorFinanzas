@@ -111,6 +111,7 @@
 
                                         <!-- Monto -->
                                         <Label Text="{Binding Monto, StringFormat='{0:C}'}" 
+                                               TextColor="{Binding ColorMonto}"
                                    Grid.Column="2" 
                                    FontSize="14" 
                                    HorizontalOptions="End" 

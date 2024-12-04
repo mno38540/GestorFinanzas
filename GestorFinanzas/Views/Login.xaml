@@ -4,6 +4,29 @@
              x:Class="GestorFinanzas.Views.Login"
              Title="">
     <ScrollView>
+        <!--<Grid RowDefinitions=".3*,.7*">
+            <Image></Image>
+            <Grid BackgroundColor="LightGray" Opacity=".9"/>
+            <Grid ColumnDefinitions="*,*">
+                <Image Aspect="AspectFill" HeightRequest="120" Source=""/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <RoundRectangle Margin="-5, -30, -5,-2"
+                                CornerRadius="30,30,0,0"
+                                Fill="White"/>
+                --><!--<VerticalStackLayout Margin="30,0,30,0">
+                    <Label FontAttributes="Bold"
+                           FontFamily="bold"
+                           FontSize="Medium"
+                           Text="BIENVENIDO!!"
+                           TextColor="#2D2D2D"/>
+                    
+
+                </VerticalStackLayout>--><!--
+
+            </Grid>
+        </Grid>-->
         <VerticalStackLayout>
 
         <Label 

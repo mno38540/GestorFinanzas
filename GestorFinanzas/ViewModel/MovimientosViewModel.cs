@@ -19,7 +19,7 @@ namespace GestorFinanzas.ViewModel
     {
         public Command AgregarIngresoCommand { get; }
         public Command AgregarGastoCommand { get; }
-
+       
 
         //Propiedades para el calculo de los totales
         public DateTime FechaActual { get; set; } = DateTime.Now;

@@ -25,10 +25,7 @@
      Title="Inicio"
      ContentTemplate="{DataTemplate Views:Home}"
      Route="Home" />
-    <ShellContent
-     Title="LogOut"
-     ContentTemplate="{DataTemplate local:MainPage}"
-     Route="MainPage" />
+
     <ShellContent Title="Nuevo Ingreso">
         <ContentPage Title="Nuevo Ingreso">
             <ContentPage.BindingContext>
